@@ -10,12 +10,12 @@ magic-tools 里为hutool的精简版代码，去掉了一些不常用的模块�
 ```xml
 <dependency>
     <groupId>com.magictools</groupId>
-    <artifactId>magic-tools</artifactId>
+    <artifactId>magic-tools-all</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
 
 ### 🍐Gradle
 ```
-implementation 'cn.hutool:hutool-all:5.8.4'
+implementation 'com.magictools:magic-tools-all:1.0.0'
 ```
