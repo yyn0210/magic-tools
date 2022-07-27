@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.magictools</groupId>
+    <artifactId>magic-tools</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <modules>
+        <module>magic-tools-core</module>
+		<module>magic-tools-http</module>
+		<module>magic-tools-json</module>
+		<module>magic-tools-all</module>
+	</modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+
+		<junit.version>4.13.2</junit.version>
+		<lombok.version>1.18.24</lombok.version>
+    </properties>
+
+	<issueManagement>
+		<system>Github Issue</system>
+		<url>https://github.com/dromara/hutool/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>Mulan Permissive Software License，Version 2</name>
+			<url>https://license.coscl.org.cn/MulanPSL2</url>
+		</license>
+	</licenses>
+
+	<dependencies>
+		<!-- 全局单元测试 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>
