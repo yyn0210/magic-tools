@@ -10,6 +10,8 @@ import com.magictools.core.text.CharPool;
 
 import java.io.File;
 import java.lang.reflect.Array;
+import java.lang.reflect.Method;
+import java.net.URLClassLoader;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.ArrayList;
@@ -190,7 +192,7 @@ public class ClassLoaderUtil {
 
 		// 自动将包名中的"/"替换为"."
 		name = name.replace(CharPool.SLASH, CharPool.DOT);
-		if(null == classLoader){
+		if (null == classLoader) {
 			classLoader = getClassLoader();
 		}
 
@@ -199,7 +201,7 @@ public class ClassLoaderUtil {
 		if (clazz == null) {
 			final String finalName = name;
 			final ClassLoader finalClassLoader = classLoader;
-			clazz = CLASS_CACHE.computeIfAbsent(Pair.of(name, classLoader), (key)-> doLoadClass(finalName, finalClassLoader, isInitialized));
+			clazz = CLASS_CACHE.computeIfAbsent(Pair.of(name, classLoader), (key) -> doLoadClass(finalName, finalClassLoader, isInitialized));
 		}
 		return clazz;
 	}
@@ -248,6 +250,25 @@ public class ClassLoaderUtil {
 		}
 	}
 
+	/**
+	 * 加载外部类
+	 *
+	 * @param classBytes jar文件或者包含jar和class文件的目录
+	 * @param name     类名
+	 * @return 类
+	 * @since 4.4.2
+	 */
+	public static Class<?> loadClass(byte[] classBytes, String name) {
+		URLClassLoader urlClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+		final Method method = ClassUtil.getDeclaredMethod(URLClassLoader.class, "defineClass", String.class, byte[].class, int.class, int.class);
+		if (null != method) {
+			method.setAccessible(true);
+			return ReflectUtil.invoke(urlClassLoader, method, name, classBytes, 0, classBytes.length);
+		}
+
+		return null;
+	}
+
 	// ----------------------------------------------------------------------------------- isPresent
 
 	/**
@@ -281,14 +302,16 @@ public class ClassLoaderUtil {
 	}
 
 	// ----------------------------------------------------------------------------------- Private method start
+
 	/**
 	 * 加载非原始类类，无缓存
-	 * @param name 类名
-	 * @param classLoader {@link ClassLoader}
+	 *
+	 * @param name          类名
+	 * @param classLoader   {@link ClassLoader}
 	 * @param isInitialized 是否初始化
 	 * @return 类
 	 */
-	private static Class<?> doLoadClass(String name, ClassLoader classLoader, boolean isInitialized){
+	private static Class<?> doLoadClass(String name, ClassLoader classLoader, boolean isInitialized) {
 		Class<?> clazz;
 		if (name.endsWith(ARRAY_SUFFIX)) {
 			// 对象数组"java.lang.String[]"风格

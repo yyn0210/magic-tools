@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magictools.mybatis.dao.StudentMapper">
+	<insert id="createTable">
+		CREATE TABLE student
+		(
+			id        int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键(学号)',
+			last_name varchar(255) NOT NULL COMMENT '名字',
+			email     varchar(255) NULL DEFAULT NULL COMMENT '电子邮箱',
+			gender    varchar(255) NOT NULL COMMENT '性别',
+			m_id      int(11) NULL DEFAULT NULL COMMENT '专业id',
+			PRIMARY KEY (id)
+		)
+	</insert>
+
+	<select id="getStuById" resultType="com.magictools.mybatis.bean.Student">
+		select id, last_name lastName, email, gender
+		from student
+		where id = #{id}
+	</select>
+	<select id="getList" resultType="com.magictools.mybatis.bean.Student">
+		select id, last_name lastName, email, gender
+		from student where id = #{map.id}
+	</select>
+</mapper>

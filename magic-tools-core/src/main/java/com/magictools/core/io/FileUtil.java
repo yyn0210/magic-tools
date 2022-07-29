@@ -621,7 +621,7 @@ public class FileUtil extends PathUtil {
 		if (null == file) {
 			return null;
 		}
-		if (false == file.exists()) {
+		if (!file.exists()) {
 			mkParentDirs(file);
 			try {
 				//noinspection ResultOfMethodCallIgnored

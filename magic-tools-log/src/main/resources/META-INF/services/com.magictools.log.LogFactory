@@ -1,0 +1,8 @@
+com.magictools.log.dialect.logtube.LogTubeLogFactory
+com.magictools.log.dialect.slf4j.Slf4jLogFactory
+com.magictools.log.dialect.log4j2.Log4j2LogFactory
+com.magictools.log.dialect.log4j.Log4jLogFactory
+com.magictools.log.dialect.commons.ApacheCommonsLogFactory
+com.magictools.log.dialect.tinylog.TinyLogFactory
+com.magictools.log.dialect.tinylog.TinyLog2Factory
+com.magictools.log.dialect.jboss.JbossLogFactory
