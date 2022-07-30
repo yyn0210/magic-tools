@@ -2,6 +2,7 @@ package com.magictools.core.util;
 
 import com.magictools.core.convert.BasicType;
 import com.magictools.core.exceptions.UtilException;
+import com.magictools.core.io.FileUtil;
 import com.magictools.core.lang.Assert;
 import com.magictools.core.lang.JarClassLoader;
 import com.magictools.core.lang.Pair;
@@ -251,14 +252,27 @@ public class ClassLoaderUtil {
 	}
 
 	/**
-	 * 加载外部类
+	 * 加载外部类到系统类加载器
 	 *
-	 * @param classBytes jar文件或者包含jar和class文件的目录
-	 * @param name     类名
+	 * @param classFile class文件
+	 * @param name      类名
 	 * @return 类
 	 * @since 4.4.2
 	 */
-	public static Class<?> loadClass(byte[] classBytes, String name) {
+	public static Class<?> loadClassToSystemClassLoader(File classFile, String name) {
+
+		return loadClassToSystemClassLoader(FileUtil.readBytes(classFile), name);
+	}
+
+	/**
+	 * 加载外部类到系统类加载器
+	 *
+	 * @param classBytes jar文件或者包含jar和class文件的目录
+	 * @param name       类名
+	 * @return 类
+	 * @since 4.4.2
+	 */
+	public static Class<?> loadClassToSystemClassLoader(byte[] classBytes, String name) {
 		URLClassLoader urlClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
 		final Method method = ClassUtil.getDeclaredMethod(URLClassLoader.class, "defineClass", String.class, byte[].class, int.class, int.class);
 		if (null != method) {
