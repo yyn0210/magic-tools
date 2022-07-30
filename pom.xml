@@ -16,6 +16,7 @@
 		<module>magic-tools-mybatis</module>
 		<module>magic-tools-boot</module>
         <module>magic-tools-log</module>
+        <module>magic-tools-crypto</module>
     </modules>
 
     <properties>

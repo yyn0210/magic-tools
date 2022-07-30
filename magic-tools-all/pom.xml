@@ -42,6 +42,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.magictools</groupId>
+			<artifactId>magic-tools-crypto</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.magictools</groupId>
 			<artifactId>magic-tools-mybatis</artifactId>
 			<version>1.0.0</version>
 		</dependency>
@@ -49,6 +54,12 @@
 			<groupId>com.magictools</groupId>
 			<artifactId>magic-tools-boot</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.8.3</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
