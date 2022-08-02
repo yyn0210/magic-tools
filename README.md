@@ -9,7 +9,7 @@ magic-tools 里为hutool的精简版代码，去掉了一些不常用的模块�
 
 ```xml
 <dependency>
-    <groupId>com.magictools</groupId>
+    <groupId>com.janeluo</groupId>
     <artifactId>magic-tools-all</artifactId>
     <version>1.0.0</version>
 </dependency>

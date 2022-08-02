@@ -4,7 +4,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>magic-tools</artifactId>
-		<groupId>com.magictools</groupId>
+		<groupId>com.janeluo</groupId>
 		<version>1.0.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -19,11 +19,27 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.janeluo</groupId>
+			<artifactId>magic-tools-core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.janeluo</groupId>
+			<artifactId>magic-tools-crypto</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.janeluo</groupId>
+			<artifactId>magic-tools-log</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot</artifactId>
 			<version>2.7.1</version>
 			<optional>true</optional>
 		</dependency>
+
 	</dependencies>
 
 </project>
