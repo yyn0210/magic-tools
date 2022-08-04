@@ -7,7 +7,10 @@
     <groupId>com.janeluo</groupId>
     <artifactId>magic-tools</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
+	<name>magic-tools</name>
+	<description>magic-tools 是一个Java工具类库</description>
+	<url>https://github.com/yyn0210/magic-tools</url>
     <modules>
         <module>magic-tools-core</module>
 		<module>magic-tools-http</module>
@@ -31,7 +34,7 @@
 
 	<issueManagement>
 		<system>Github Issue</system>
-		<url>https://github.com/dromara/hutool/issues</url>
+		<url>https://github.com/yyn0210/magic-tools/issues</url>
 	</issueManagement>
 
 	<licenses>

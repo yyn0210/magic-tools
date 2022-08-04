@@ -16,6 +16,10 @@ public class BytesClassLoader extends ClassLoader {
 	public BytesClassLoader() {
 	}
 
+	public BytesClassLoader(ClassLoader parent) {
+		super(parent);
+	}
+
 	/**
 	 * 加载Jar到ClassPath
 	 *
@@ -28,6 +32,7 @@ public class BytesClassLoader extends ClassLoader {
 		loader.defineClass(name, bytes, 0, bytes.length);
 		return loader;
 	}
+
 	/**
 	 * 加载Jar到ClassPath
 	 *
@@ -36,6 +41,18 @@ public class BytesClassLoader extends ClassLoader {
 	 */
 	public static BytesClassLoader load(byte[] classBytes, String name) {
 		final BytesClassLoader loader = new BytesClassLoader();
+		loader.defineClass(name, classBytes, 0, classBytes.length);
+		return loader;
+	}
+
+	/**
+	 * 加载Jar到ClassPath
+	 *
+	 * @param classBytes class文件字节数组
+	 * @return BytesClassLoader
+	 */
+	public static BytesClassLoader load(ClassLoader parent, byte[] classBytes, String name) {
+		final BytesClassLoader loader = new BytesClassLoader(parent);
 		loader.defineClass(name, classBytes, 0, classBytes.length);
 		return loader;
 	}
